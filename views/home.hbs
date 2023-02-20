@@ -1,0 +1,49 @@
+<nav class="navbar navbar-light bg-light">
+  <a "nav-link active" aria-current="page" href="/view">
+    <img src="https://seeklogo.com/images/N/nobel-prize-logo-7A8FE9ECEC-seeklogo.com.png" 
+    width="90" height="72" class="img-thumbnail" alt="">
+    
+  </a>
+</nav>
+
+<div class="container">
+    <p class="fs-3 text-center "> Nobel Prizes Winners by Years </p>
+    <form method="post" action="/view/" name="tabCat">
+        <select name="category" id="category" class="form-select form-select-lg" onchange="tabCat.submit()">
+            <option>Choose a Nobel Prizes Category</option>
+            {{#if categories}}
+                {{#each categories}}
+                    <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            {{else}}
+                <option value="">No values availables</option>
+            {{/if}}
+        </select>
+    </form>
+    <table class="table table-hover table-dark">
+        <thead class="thead-dark">
+        <tr>
+            <th>First-name</th>
+            <th>Last-name</th>
+            <th>Years</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#if laureates}}
+            {{#each laureates}}
+                <tr>
+                    <td>{{this.firstname}}</td>
+                    <td>{{this.surname}}</td>
+                    <td>{{this.year}}</td>
+                </tr>
+            {{/each}}
+        {{else}}
+            <tr>
+                <td>Please choose a category</td>
+                <td> </td>
+                <td> </td>
+            </tr>
+        {{/if}}
+        </tbody>
+    </table>
+</div>
